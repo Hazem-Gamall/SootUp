@@ -1,0 +1,8 @@
+[
+{
+  "jar_name": "sqoop-repository-derby-1.99.7.jar",
+  "exception": "Failed to apply sootup.interceptors.LocalSplitter@3dd4f91d to <org.apache.sqoop.repository.derby.DerbyRepositoryHandler: void shutdown()>",
+  "download_url": "https://repo1.maven.org/maven2/org/apache/sqoop/repository/sqoop-repository-derby/1.99.7/sqoop-repository-derby-1.99.7.jar",
+  "failedMethodSignature": "<org.apache.sqoop.repository.derby.DerbyRepositoryHandler: void shutdown()>"
+}
+]
