@@ -1,0 +1,8 @@
+[
+{
+  "jar_name": "azure-spring-integration-servicebus-4.0.0.jar",
+  "exception": "java.lang.RuntimeException: Could not open file system of /tmp/tempDir6910820672895713728/azure-spring-integration-servicebus-4.0.0.jar",
+  "download_url": "https://repo1.maven.org/maven2/com/azure/spring/azure-spring-integration-servicebus/4.0.0/azure-spring-integration-servicebus-4.0.0.jar",
+  "failedMethodSignature": ""
+}
+]
