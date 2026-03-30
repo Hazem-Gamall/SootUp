@@ -1,0 +1,14 @@
+[
+{
+  "jar_name": "azure-spring-cloud-stream-binder-servicebus-topic-4.0.0.jar",
+  "exception": "java.lang.RuntimeException: Could not open file system of /tmp/tempDir12039702084123940306/azure-spring-cloud-stream-binder-servicebus-topic-4.0.0.jar",
+  "download_url": "https://repo1.maven.org/maven2/com/azure/spring/azure-spring-cloud-stream-binder-servicebus-topic/4.0.0/azure-spring-cloud-stream-binder-servicebus-topic-4.0.0.jar",
+  "failedMethodSignature": ""
+},
+{
+  "jar_name": "gant_groovy2.3-1.9.11.jar",
+  "exception": "Failed to convert <gant.Gant: java.lang.Integer processArgs(java.lang.String[])>",
+  "download_url": "https://repo1.maven.org/maven2/org/codehaus/gant/gant_groovy2.3/1.9.11/gant_groovy2.3-1.9.11.jar",
+  "failedMethodSignature": "<gant.Gant: java.lang.Integer processArgs(java.lang.String[])>"
+}
+]
