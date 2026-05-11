@@ -144,15 +144,19 @@ public class JavaView extends AbstractView {
 
   @NonNull
   protected Optional<JavaSootClassSource> getClassSource(@NonNull ClassType type) {
-    return inputLocations.parallelStream()
-        .map(location -> location.getClassSource(type, this))
-        .filter(Optional::isPresent)
-        // like javas behaviour: if multiple matching Classes(ClassTypes) are found on the
-        // classpath the first is returned (see splitpackage)
-        .limit(1)
-        .map(Optional::get)
-        .map(classSource -> (JavaSootClassSource) classSource)
-        .findAny();
+    // Process inputLocations in parallel but preserve the "first-in-list" semantics by
+    // attaching indices and selecting the smallest index whose location produced a present
+    // Optional. This keeps full parallelism while returning the earliest-match by input order.
+    return java.util.stream.IntStream.range(0, inputLocations.size())
+        .parallel()
+        .mapToObj(
+            i ->
+                new java.util.AbstractMap.SimpleEntry<>(
+                    i, inputLocations.get(i).getClassSource(type, this)))
+        .filter(e -> e.getValue().isPresent())
+        // pick the entry with the smallest original index
+        .min(java.util.Comparator.comparingInt(e -> e.getKey()))
+        .map(e -> (JavaSootClassSource) e.getValue().get());
   }
 
   @NonNull
