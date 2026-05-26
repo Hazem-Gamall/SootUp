@@ -29,7 +29,7 @@ import sootup.apk.frontend.Util.DexUtil;
 import sootup.apk.frontend.main.DexBody;
 import sootup.core.jimple.Jimple;
 import sootup.core.jimple.basic.Local;
-import sootup.core.jimple.basic.StmtPositionInfo;
+import sootup.core.jimple.basic.SimpleStmtPositionInfo;
 import sootup.core.jimple.common.expr.JNewArrayExpr;
 import sootup.core.jimple.common.stmt.JAssignStmt;
 import sootup.core.types.ArrayType;
@@ -58,7 +58,7 @@ public class NewArrayInstruction extends DexLibAbstractInstruction {
 
     Local l = body.getRegisterLocal(dest);
     JAssignStmt assign =
-        Jimple.newAssignStmt(l, jNewArrayExpr, StmtPositionInfo.getNoStmtPositionInfo());
+        Jimple.newAssignStmt(l, jNewArrayExpr, new SimpleStmtPositionInfo(lineNumber));
     setStmt(assign);
     body.add(assign);
   }

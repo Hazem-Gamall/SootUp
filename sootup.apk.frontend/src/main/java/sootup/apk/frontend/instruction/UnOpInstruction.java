@@ -28,7 +28,7 @@ import org.jf.dexlib2.iface.instruction.formats.Instruction12x;
 import sootup.apk.frontend.main.DexBody;
 import sootup.core.jimple.Jimple;
 import sootup.core.jimple.basic.Local;
-import sootup.core.jimple.basic.StmtPositionInfo;
+import sootup.core.jimple.basic.SimpleStmtPositionInfo;
 import sootup.core.jimple.basic.Value;
 import sootup.core.jimple.common.constant.IntConstant;
 import sootup.core.jimple.common.constant.LongConstant;
@@ -53,7 +53,7 @@ public class UnOpInstruction extends DexLibAbstractInstruction {
     Value expr = getExpression(source);
     JAssignStmt assign =
         Jimple.newAssignStmt(
-            body.getRegisterLocal(dest), expr, StmtPositionInfo.getNoStmtPositionInfo());
+            body.getRegisterLocal(dest), expr, new SimpleStmtPositionInfo(lineNumber));
 
     setStmt(assign);
     body.add(assign);

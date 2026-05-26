@@ -29,7 +29,7 @@ import sootup.apk.frontend.Util.DexUtil;
 import sootup.apk.frontend.main.DexBody;
 import sootup.core.jimple.Jimple;
 import sootup.core.jimple.basic.Local;
-import sootup.core.jimple.basic.StmtPositionInfo;
+import sootup.core.jimple.basic.SimpleStmtPositionInfo;
 import sootup.core.jimple.common.expr.JCastExpr;
 import sootup.core.jimple.common.stmt.JAssignStmt;
 import sootup.core.types.Type;
@@ -52,7 +52,7 @@ public class CheckCastInstruction extends DexLibAbstractInstruction {
     // generate "x = (Type) x"
     // splitter will take care of the rest
     JAssignStmt jAssignStmt =
-        Jimple.newAssignStmt(castValue, castExpr, StmtPositionInfo.getNoStmtPositionInfo());
+        Jimple.newAssignStmt(castValue, castExpr, new SimpleStmtPositionInfo(lineNumber));
     setStmt(jAssignStmt);
     body.add(jAssignStmt);
   }

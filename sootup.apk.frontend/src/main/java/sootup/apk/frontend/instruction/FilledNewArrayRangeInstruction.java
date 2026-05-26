@@ -29,7 +29,7 @@ import sootup.apk.frontend.Util.DexUtil;
 import sootup.apk.frontend.main.DexBody;
 import sootup.core.jimple.Jimple;
 import sootup.core.jimple.basic.Local;
-import sootup.core.jimple.basic.StmtPositionInfo;
+import sootup.core.jimple.basic.SimpleStmtPositionInfo;
 import sootup.core.jimple.common.constant.IntConstant;
 import sootup.core.jimple.common.expr.JNewArrayExpr;
 import sootup.core.jimple.common.ref.JArrayRef;
@@ -54,7 +54,7 @@ public class FilledNewArrayRangeInstruction extends FilledArrayInstruction {
             arrayType, IntConstant.getInstance(usedRegister), JavaIdentifierFactory.getInstance());
     Local arrayLocal = body.getStoreResultLocal();
     JAssignStmt assignStmt =
-        Jimple.newAssignStmt(arrayLocal, arrayExpr, StmtPositionInfo.getNoStmtPositionInfo());
+        Jimple.newAssignStmt(arrayLocal, arrayExpr, new SimpleStmtPositionInfo(lineNumber));
     body.add(assignStmt);
 
     for (int i = 0; i < usedRegister; i++) {
@@ -64,7 +64,7 @@ public class FilledNewArrayRangeInstruction extends FilledArrayInstruction {
           Jimple.newAssignStmt(
               arrayRef,
               body.getRegisterLocal(i + filledNewArrayInstr.getStartRegister()),
-              StmtPositionInfo.getNoStmtPositionInfo());
+              new SimpleStmtPositionInfo(lineNumber));
       body.add(assign);
     }
     setStmt(assignStmt);
